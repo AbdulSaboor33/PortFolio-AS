@@ -1,0 +1,790 @@
+/* Basic resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    overflow-x: hidden;
+}
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: linear-gradient(90deg, #1c1c1c, #121212);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease;
+}
+
+nav .logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #00aaff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+nav .menu-toggle {
+    display: none; /* Hide by default */
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Navbar Links */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 15px;
+    transition: 0.3s ease;
+    position: relative;
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #00aaff;
+    transition: 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover::before {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: #00aaff;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        display: none; /* Hide the navbar on mobile by default */
+        background: #1c1c1c;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Add shadow for better visibility */
+    }
+
+    nav ul.active {
+        display: flex; /* Show the navbar when the menu toggle is clicked */
+    }
+
+    nav .menu-toggle {
+        display: block; /* Show the menu toggle button */
+    }
+}
+
+/* Home Section */
+#home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 0 50px;
+    background: url('B3.jpg') no-repeat center center/cover;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    perspective: 1000px;
+    /* Adds perspective to the 3D effect */
+}
+
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+#home .content {
+    z-index: 2;
+}
+
+#home .content h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    color: #00aaff;
+    animation: fadeIn 2s ease-in-out;
+}
+
+#home .content p {
+    font-size: 24px;
+    letter-spacing: 1px;
+    animation: fadeIn 2s ease-in-out 0.5s;
+}
+
+#home .image-container {
+    position: relative;
+    animation: floating 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+    /* Enables 3D transformations for child elements */
+}
+
+#home .image-container img {
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    filter: grayscale(50%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+    animation: bounce 3s ease-in-out infinite;
+    transform: rotateX(0deg) rotateY(0deg);
+    /* Initial 3D transformation */
+}
+
+#home .image-container:hover img {
+    filter: grayscale(0);
+    transform: scale(1.1) rotateY(15deg) rotateX(10deg);
+    /* Adds 3D rotation on hover */
+}
+
+/* Floating and Bounce Effects */
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-30px);
+    }
+
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating effect */
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* About Section */
+#about {
+    display: flex;
+    flex-direction: column;
+    /* Stack heading and container vertically */
+    align-items: center;
+    padding: 100px 50px;
+    background: linear-gradient(120deg, #1c1c1c, #2c2c2c);
+    color: #fff;
+    text-align: center;
+    /* Center text inside the section */
+}
+
+#about .heading {
+    width: 100%;
+    text-align: center;
+    /* Center heading text */
+    margin-bottom: 40px;
+    /* Space between heading and content */
+}
+
+#about .heading h1 {
+    font-size: 48px;
+    /* Adjust size as needed */
+    color: #00aaff;
+    animation: fadeIn 2s ease-in-out;
+}
+
+#about .container {
+    display: flex;
+    align-items: flex-start;
+    /* Align items at the start of the container */
+    justify-content: center;
+    /* Center content horizontally */
+    width: 100%;
+    max-width: 1200px;
+    /* Limit the maximum width */
+    gap: 20px;
+    /* Space between info and image */
+}
+
+#about .info {
+    flex: 2;
+    /* Make the info section take up more space */
+    padding: 20px;
+    box-sizing: border-box;
+    /* Includes padding in the width calculation */
+}
+
+#about .info h2 {
+    font-size: 36px;
+    /* Increased font size */
+    margin-bottom: 20px;
+    /* Adjust spacing below heading */
+    color: #00aaff;
+    animation: fadeIn 2s ease-in-out;
+}
+
+#about .info p {
+    font-size: 24px;
+    /* Increased font size */
+    line-height: 1.6;
+    animation: fadeIn 2s ease-in-out 0.5s;
+}
+
+#about .info a {
+    color: #00aaff;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    /* Makes padding and hover effects work better */
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    /* Allows for pseudo-element positioning */
+    padding: 5px 10px;
+    /* Adds some space around the link text */
+}
+
+#about .info a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00aaff;
+    transition: width 0.3s ease;
+}
+
+#about .info a:hover {
+    color: #0088cc;
+    transform: translateY(-3px);
+    /* Slight lift effect on hover */
+}
+
+#about .info a:hover::before {
+    width: 100%;
+    /* Expands underline effect on hover */
+}
+
+#about .image-container {
+    flex: 1;
+    /* Make the image container take up less space compared to info */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    /* Additional styling */
+    border-radius: 20px;
+    background: rgba(39, 1, 253, 0.4);
+    /* Background for the container */
+    padding: 10px;
+    /* Padding around the image */
+}
+
+#about .image-container img {
+    width: 100%;
+    /* Full width of the container */
+    height: auto;
+    border-radius: 15px;
+    /* Slightly adjusted border-radius */
+    filter: grayscale(50%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+    transform: perspective(600px) rotateX(0deg) rotateY(0deg);
+    /* Initial 3D effect */
+}
+
+#about .image-container:hover img {
+    filter: grayscale(0);
+    transform: perspective(600px) scale(1.1) rotateX(10deg) rotateY(10deg);
+    /* Adds 3D curve effect on hover */
+}
+
+/* Floating Effect */
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+        /* Reduced floating distance */
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Education Section */
+#education {
+    padding: 100px 50px;
+    background: linear-gradient(120deg, #1c1c1c, #2c2c2c);
+    color: #fff;
+    text-align: center;
+}
+
+#education .heading {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+#education .heading h1 {
+    font-size: 48px;
+    color: #00aaff;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.education-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+#education .column {
+    width: 45%;
+}
+
+#education h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #00aaff;
+    text-align: center;
+}
+
+#education .box {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#education .box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+#education h3 {
+    font-size: 28px;
+    color: #00aaff;
+    margin-bottom: 15px;
+}
+
+#education p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+/* Skills Section */
+#skills {
+    padding: 100px 50px;
+    background: linear-gradient(120deg, #1c1c1c, #2c2c2c);
+    color: #fff;
+    text-align: center;
+}
+
+#skills .heading {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+#skills .heading h1 {
+    font-size: 48px;
+    color: #00aaff;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.skills-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.skill {
+    margin-bottom: 30px;
+}
+
+.skill h3 {
+    font-size: 24px;
+    color: #00aaff;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 30px;
+    width: 100%;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.progress {
+    background: #00aaff;
+    height: 100%;
+    line-height: 30px;
+    color: #fff;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 10px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+    transition: width 1s ease-in-out;
+}
+
+.skill:hover .progress {
+    background: #0088cc;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Project Section */
+#projects {
+    padding: 100px 50px;
+    background: linear-gradient(120deg, #1c1c1c, #2c2c2c);
+    color: #fff;
+    text-align: center;
+}
+
+#projects .heading {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+#projects .heading h1 {
+    font-size: 48px;
+    color: #00aaff;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.projects-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.project-box {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    width: 300px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+.project-box h3 {
+    font-size: 24px;
+    color: #00aaff;
+    margin-bottom: 15px;
+}
+
+.project-box .description {
+    font-size: 16px;
+    color: #ddd;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-box:hover .description {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-box .link {
+    display: block;
+    margin-top: 15px;
+    color: #00aaff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.project-box .link:hover {
+    color: #0088cc;
+}
+
+/* Contact Section */
+#contact {
+    padding: 100px 50px;
+    background: linear-gradient(120deg, #1c1c1c, #2c2c2c);
+    color: #fff;
+    text-align: center;
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#contact h2 {
+    font-size: 36px;
+    color: #00aaff;
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.send-request-btn {
+    background-color: #00aaff;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.send-request-btn:hover {
+    background-color: #0088cc;
+}
+
+.request-form {
+    display: none;
+    /* Initially hidden */
+    margin-top: 20px;
+    text-align: left;
+}
+
+.request-form textarea {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #00aaff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    resize: vertical;
+    background-color: #2c2c2c;
+    color: #fff;
+}
+
+.submit-request-btn {
+    background-color: #00aaff;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.submit-request-btn:hover {
+    background-color: #0088cc;
+}
+
+/* Footer Section */
+/* Footer Section */
+#footer {
+    padding: 50px 20px;
+    background-color: #121212;
+    /* Default dark background */
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    border-top: 3px solid #00aaff;
+    overflow: hidden;
+    /* Ensure animations don't overflow */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-text {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #ffffff;
+    animation: fadeInUp 1s ease-out;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.footer-links a {
+    color: #00aaff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #0088cc;
+    transform: translateY(-3px);
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-socials a {
+    color: #ffffff;
+    font-size: 24px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-socials a:hover {
+    color: #00aaff;
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #888;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Scroll-to-Top Button Styling */
+.scroll-to-top {
+    position: fixed;
+    left: 20px;
+    /* Position the button on the left side */
+    bottom: 20px;
+    /* Position the button at the bottom */
+    background-color: #333;
+    /* Background color */
+    color: white;
+    /* Icon color */
+    padding: 10px 15px;
+    /* Padding around the icon */
+    border-radius: 50%;
+    /* Make it circular */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Shadow effect */
+    text-align: center;
+    font-size: 24px;
+    /* Icon size */
+    transition: background-color 0.3s, transform 0.3s;
+    /* Smooth transitions */
+    display: none;
+    /* Initially hidden */
+}
+
+.scroll-to-top:hover {
+    background-color: #555;
+    /* Darker background on hover */
+    transform: scale(1.1);
+    /* Slightly increase size on hover */
+}
+
+/* Show button when scrolled down */
+.show {
+    display: block;
+}
