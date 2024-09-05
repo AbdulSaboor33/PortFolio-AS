@@ -414,12 +414,15 @@ nav ul li a:hover {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
+    flex-wrap: wrap; /* Allows boxes to wrap in mobile view */
 }
 
 #education .column {
     width: 45%;
+    margin-bottom: 20px; /* Add margin for better spacing */
 }
 
+/* Adjust font size for mobile */
 #education h2 {
     font-size: 36px;
     margin-bottom: 40px;
@@ -450,6 +453,25 @@ nav ul li a:hover {
 #education p {
     font-size: 18px;
     margin: 5px 0;
+}
+
+/* Media query for smaller devices */
+@media (max-width: 768px) {
+    #education .column {
+        width: 100%; /* Stack boxes vertically */
+    }
+    
+    #education h3 {
+        font-size: 24px; /* Adjust heading size */
+    }
+
+    #education h1 {
+        font-size: 32px; /* Reduce heading size for mobile */
+    }
+    
+    #education p {
+        font-size: 16px; /* Reduce paragraph size */
+    }
 }
 
 /* Skills Section */
